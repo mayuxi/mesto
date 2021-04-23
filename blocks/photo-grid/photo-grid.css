@@ -1,0 +1,9 @@
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 282px);
+  gap: 20px 17px;
+  list-style: none;
+  padding: 0;
+  margin: 51px 0 0;
+  line-height: 0; /* deleting white space between photo and title */
+}

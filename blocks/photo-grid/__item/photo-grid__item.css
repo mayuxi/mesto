@@ -1,0 +1,6 @@
+.photo-grid__item {
+  background-color: #fff;
+  color: #000;
+  border-radius: 10px;
+  position: relative;
+}
