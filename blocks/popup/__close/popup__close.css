@@ -1,0 +1,6 @@
+.popup__close {
+  justify-self: start;
+  position: absolute;
+  top: -50px;
+  right: -50px;
+}
