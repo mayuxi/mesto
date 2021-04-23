@@ -6,3 +6,9 @@
   color: #545454;
   padding: 67px 0 60px;
 }
+
+@media screen and (max-width: 880px) {
+  .footer {
+    padding: 48px 19px 36px;
+  }
+}

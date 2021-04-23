@@ -6,3 +6,10 @@
   white-space: nowrap;
   overflow: hidden;
 }
+
+@media screen and (max-width: 600px) {
+  .profile__job {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}

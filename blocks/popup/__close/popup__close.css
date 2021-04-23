@@ -1,6 +1,12 @@
 .popup__close {
-  justify-self: start;
   position: absolute;
   top: -50px;
   right: -50px;
+}
+
+@media screen and (max-width: 425px) {
+  .popup__close {
+    top: -60px;
+    right: 0px;
+  }
 }

@@ -6,9 +6,16 @@
   padding: 14px 64px;
   width: 150px;
   height: 50px;
+  justify-content: center;
   transition: opacity 0.3s ease-in-out;
 }
 
 .add-button:hover {
   opacity: .6;
+}
+
+@media screen and (max-width: 425px) {
+  .add-button {
+    width: 100%;
+  }
 }

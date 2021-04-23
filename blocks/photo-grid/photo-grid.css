@@ -7,3 +7,15 @@
   margin: 51px 0 0;
   line-height: 0; /* deleting white space between photo and title */
 }
+
+@media screen and (max-width: 880px) {
+  .photo-grid {
+    grid-template-columns: repeat(2, calc(50% - 17px / 2) );
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .photo-grid {
+    grid-template-columns: minmax(282px, 1fr);
+  }
+}
