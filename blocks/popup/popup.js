@@ -5,7 +5,6 @@ let popup = document.querySelector('.popup');
 
 // Переключатель попапа
 function popupToggle(evt) {
-  evt.preventDefault();
   popup.classList.toggle('popup_opened');
 }
 // Вешаем функцию на кнопки
