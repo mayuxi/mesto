@@ -1,0 +1,14 @@
+.add-button {
+  display: flex;
+  border: 2px solid #fff;
+  border-radius: 2px;
+  box-sizing: border-box;
+  padding: 14px 64px;
+  width: 150px;
+  height: 50px;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.add-button:hover {
+  opacity: .6;
+}

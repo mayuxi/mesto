@@ -1,0 +1,8 @@
+.profile__info {
+  display: grid;
+  grid-template-columns: fit-content(80%) min-content;
+  flex-grow: 1;
+  margin: 0 30px;
+  column-gap: 18px;
+  row-gap: 16px;
+}

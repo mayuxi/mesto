@@ -1,0 +1,16 @@
+.profile__edit {
+  box-sizing: border-box;
+  border: 1px solid #fff;
+  width: 24px;
+  height: 24px;
+  padding: 7px;
+  display: flex;
+  transition: opacity 0.3s ease-in-out;
+  grid-column-start: 2;
+  grid-row-start: 1;
+  align-self: center;
+}
+
+.profile__edit:hover {
+  opacity: .6;
+}
