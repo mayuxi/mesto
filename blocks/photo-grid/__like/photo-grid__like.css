@@ -1,9 +1,14 @@
 .photo-grid__like {
   position: absolute;
   right: 20px;
-  bottom: 30px;
-  line-height: 24px;
+  bottom: 35px;
   transition: opacity 0.3s ease-in-out;
+  width: 22px;
+  height: 19px;
+  background: url('../../../images/photo-grid__like.svg') center no-repeat;
+  font-size: 0; /* Скрываем текст */
+  border: none;
+  cursor: pointer;
 }
 
 .photo-grid__like:hover {

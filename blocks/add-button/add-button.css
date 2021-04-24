@@ -3,11 +3,12 @@
   border: 2px solid #fff;
   border-radius: 2px;
   box-sizing: border-box;
-  padding: 14px 64px;
   width: 150px;
   height: 50px;
   justify-content: center;
   transition: opacity 0.3s ease-in-out;
+  background: #000 url('../../images/add-button.svg') center no-repeat;
+  font-size: 0; /* Скрываем текст */
 }
 
 .add-button:hover {

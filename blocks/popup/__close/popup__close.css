@@ -2,6 +2,11 @@
   position: absolute;
   top: -50px;
   right: -50px;
+  height: 40px;
+  width: 40px;
+  background: url('../../../images/popup__close.svg') center no-repeat;
+  font-size: 0; /* Скрываем текст */
+  border: none;
 }
 
 @media screen and (max-width: 425px) {

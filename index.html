@@ -19,42 +19,43 @@
       <div class="profile__info">
         <h1 class="profile__name">Жак-Ив Кусто</h1>
         <p class="profile__job">Исследователь океана</p>
-        <a href="#" class="profile__edit" target="_self"><img src="images/profile__edit.svg" alt="Редактировать профиль"></a>
+        <button class="profile__edit" type="button">Редактировать</button>
       </div>
 
-      <a href="#" class="add-button" target="_self"><img src="images/add-button.svg" alt="Добавить фото"></a>
+      <button class="add-button" type="button">Добавить фото</button>
+      
     </section>
     <section class="places">
       <ul class="photo-grid">
         <li class="photo-grid__item">
           <img src="images/photo-grid/kirill-pershin-dH-RKxKs6to-unsplash.jpg" alt="Карачаевск" class="photo-grid__pic">
           <h2 class="photo-grid__title">Карачаевск</h2>
-          <a href="#" class="photo-grid__like" target="_self"><img src="images/photo-grid__like.svg" alt="Нравится"></a>
+          <button type="button" class="photo-grid__like">Нравится</button>
         </li>
         <li class="photo-grid__item">
           <img src="images/photo-grid/kirill-pershin-HJNJV2Be4Ps-unsplash.jpg" alt="Гора Эльбрус" class="photo-grid__pic">
           <h2 class="photo-grid__title">Гора Эльбрус</h2>
-          <a href="#" class="photo-grid__like photo-grid__like_active" target="_self"><img src="images/photo-grid__like.svg" alt="Нравится"></a>
+          <button type="button" class="photo-grid__like photo-grid__like_active">Нравится</button>
         </li>
         <li class="photo-grid__item">
           <img src="images/photo-grid/kirill-pershin-jmQEz9VvUoI-unsplash.jpg" alt="Домбай" class="photo-grid__pic">
           <h2 class="photo-grid__title">Домбай</h2>
-          <a href="#" class="photo-grid__like" target="_self"><img src="images/photo-grid__like.svg" alt="Нравится"></a>
+          <button type="button" class="photo-grid__like">Нравится</button>
         </li>
         <li class="photo-grid__item">
           <img src="images/photo-grid/kirill-pershin-HJNJV2Be4Ps-unsplash.jpg" alt="Гора Эльбрус" class="photo-grid__pic">
           <h2 class="photo-grid__title">Гора Эльбрус</h2>
-          <a href="#" class="photo-grid__like" target="_self"><img src="images/photo-grid__like.svg" alt="Нравится"></a>
+          <button type="button" class="photo-grid__like">Нравится</button>
         </li>
         <li class="photo-grid__item">
           <img src="images/photo-grid/kirill-pershin-jmQEz9VvUoI-unsplash.jpg" alt="Домбай" class="photo-grid__pic">
           <h2 class="photo-grid__title">Домбай</h2>
-          <a href="#" class="photo-grid__like" target="_self"><img src="images/photo-grid__like.svg" alt="Нравится"></a>
+          <button type="button" class="photo-grid__like">Нравится</button>
         </li>
         <li class="photo-grid__item">
           <img src="images/photo-grid/kirill-pershin-dH-RKxKs6to-unsplash.jpg" alt="Карачаево-Черкесия" class="photo-grid__pic">
           <h2 class="photo-grid__title">Карачаево-Черкесия</h2>
-          <a href="#" class="photo-grid__like" target="_self"><img src="images/photo-grid__like.svg" alt="Нравится"></a>
+          <button type="button" class="photo-grid__like">Нравится</button>
         </li>
       </ul>
     </section>
@@ -67,8 +68,8 @@
       <h2 class="popup__title">Редактировать профиль</h2>
       <input type="text" value="Жак-Ив Кусто" placeholder="Ваше имя" class="popup__input popup__input_type_name">
       <input type="text" value="Исследователь океана" placeholder="Чем занимаетесь?" class="popup__input popup__input_type_job">
-      <input type="submit" value="Сохранить" class="popup__submit">
-      <a href="#" class="popup__close" title="Закрыть" target="_self"><img src="images/popup__close.svg" alt="Закрыть"></a>
+      <button type="submit" class="popup__submit">Сохранить</button>
+      <button class="popup__close" type="button">Закрыть</button>
     </form>
   </div>
   <script src="blocks/popup/popup.js"></script>
