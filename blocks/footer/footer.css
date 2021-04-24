@@ -9,6 +9,8 @@
 
 @media screen and (max-width: 880px) {
   .footer {
+    font-size: 14px;
+    line-height: 17px;
     padding: 48px 19px 36px;
   }
 }

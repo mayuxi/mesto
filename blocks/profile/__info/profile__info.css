@@ -6,6 +6,7 @@
   column-gap: 18px;
   row-gap: 16px;
   position: relative;
+  
 }
 
 @media screen and (max-width: 600px) {
@@ -13,5 +14,6 @@
     grid-template-columns: 1fr min-content;
     margin: 26px 0 36px;
     row-gap: 14px;
+    text-align: center;
   }
 }

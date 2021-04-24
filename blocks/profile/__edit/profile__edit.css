@@ -10,6 +10,7 @@
   align-self: center;
   background: #000 url('../../../images/profile__edit.svg') center no-repeat;
   font-size: 0; /* Скрываем текст */
+  cursor: pointer;
 }
 
 .profile__edit:hover {

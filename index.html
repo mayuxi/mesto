@@ -22,40 +22,52 @@
         <button class="profile__edit" type="button">Редактировать</button>
       </div>
 
-      <button class="add-button" type="button">Добавить фото</button>
+      <button class="profile__add-button" type="button">Добавить фото</button>
       
     </section>
     <section class="places">
       <ul class="photo-grid">
         <li class="photo-grid__item">
           <img src="images/photo-grid/kirill-pershin-dH-RKxKs6to-unsplash.jpg" alt="Карачаевск" class="photo-grid__pic">
-          <h2 class="photo-grid__title">Карачаевск</h2>
-          <button type="button" class="photo-grid__like">Нравится</button>
+          <div class="photo-grid__item-description">
+            <h2 class="photo-grid__title">Карачаевск</h2>
+            <button type="button" class="photo-grid__like">Нравится</button>
+          </div>
         </li>
         <li class="photo-grid__item">
           <img src="images/photo-grid/kirill-pershin-HJNJV2Be4Ps-unsplash.jpg" alt="Гора Эльбрус" class="photo-grid__pic">
-          <h2 class="photo-grid__title">Гора Эльбрус</h2>
-          <button type="button" class="photo-grid__like photo-grid__like_active">Нравится</button>
+          <div class="photo-grid__item-description">
+            <h2 class="photo-grid__title">Гора Эльбрус</h2>
+            <button type="button" class="photo-grid__like photo-grid__like_active">Нравится</button>
+          </div>
         </li>
         <li class="photo-grid__item">
           <img src="images/photo-grid/kirill-pershin-jmQEz9VvUoI-unsplash.jpg" alt="Домбай" class="photo-grid__pic">
-          <h2 class="photo-grid__title">Домбай</h2>
-          <button type="button" class="photo-grid__like">Нравится</button>
+          <div class="photo-grid__item-description">
+            <h2 class="photo-grid__title">Домбай</h2>
+            <button type="button" class="photo-grid__like">Нравится</button>
+          </div>
         </li>
         <li class="photo-grid__item">
           <img src="images/photo-grid/kirill-pershin-HJNJV2Be4Ps-unsplash.jpg" alt="Гора Эльбрус" class="photo-grid__pic">
-          <h2 class="photo-grid__title">Гора Эльбрус</h2>
-          <button type="button" class="photo-grid__like">Нравится</button>
+          <div class="photo-grid__item-description">
+            <h2 class="photo-grid__title">Гора Эльбрус</h2>
+            <button type="button" class="photo-grid__like">Нравится</button>
+          </div>
         </li>
         <li class="photo-grid__item">
           <img src="images/photo-grid/kirill-pershin-jmQEz9VvUoI-unsplash.jpg" alt="Домбай" class="photo-grid__pic">
-          <h2 class="photo-grid__title">Домбай</h2>
-          <button type="button" class="photo-grid__like">Нравится</button>
+          <div class="photo-grid__item-description">
+            <h2 class="photo-grid__title">Домбай</h2>
+            <button type="button" class="photo-grid__like">Нравится</button>
+          </div>
         </li>
         <li class="photo-grid__item">
           <img src="images/photo-grid/kirill-pershin-dH-RKxKs6to-unsplash.jpg" alt="Карачаево-Черкесия" class="photo-grid__pic">
-          <h2 class="photo-grid__title">Карачаево-Черкесия</h2>
-          <button type="button" class="photo-grid__like">Нравится</button>
+          <div class="photo-grid__item-description">
+            <h2 class="photo-grid__title">Карачаево-Черкесия</h2>
+            <button type="button" class="photo-grid__like">Нравится</button>
+          </div>
         </li>
       </ul>
     </section>
@@ -64,14 +76,16 @@
     &copy; 2020 Mesto Russia
   </footer>
   <div class="popup">
-    <form action="" method="POST" class="popup__container">
-      <h2 class="popup__title">Редактировать профиль</h2>
-      <input type="text" value="Жак-Ив Кусто" placeholder="Ваше имя" class="popup__input popup__input_type_name">
-      <input type="text" value="Исследователь океана" placeholder="Чем занимаетесь?" class="popup__input popup__input_type_job">
-      <button type="submit" class="popup__submit">Сохранить</button>
+    <div class="popup__container">
       <button class="popup__close" type="button">Закрыть</button>
-    </form>
+      <form action="/" method="POST" class="form" name="edit-profile">
+        <h2 class="form__title">Редактировать профиль</h2>
+        <input type="text" value="Жак-Ив Кусто" placeholder="Ваше имя" class="form__input form__input_type_name" name="profile_name">
+        <input type="text" value="Исследователь океана" placeholder="Чем занимаетесь?" class="form__input form__input_type_job" name="profile_job">
+        <button type="submit" class="form__submit">Сохранить</button>
+      </form>
+    </div>
   </div>
-  <script src="blocks/popup/popup.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

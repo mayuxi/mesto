@@ -7,6 +7,12 @@
   background: url('../../../images/popup__close.svg') center no-repeat;
   font-size: 0; /* Скрываем текст */
   border: none;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.popup__close:hover {
+  opacity: .6;
 }
 
 @media screen and (max-width: 425px) {
