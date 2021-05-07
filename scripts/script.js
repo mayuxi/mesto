@@ -2,9 +2,11 @@
 const addButton = document.querySelector('.profile__add-button');
 const closeButton = document.querySelectorAll('.popup__close');
 const editButton = document.querySelector('.profile__edit');
+
 // Контейнер и шаблон для фото
 const photoContainer = document.querySelector('.photo-grid');
 const photoTemplate = document.querySelector('#photo-grid-template');
+
 // Попапы
 const popup = document.querySelector('.popup');
 const popupProfile = document.querySelector('.popup_type_profile');
@@ -54,16 +56,21 @@ function addPhoto(name, link) {
   //     e.target.closest('.tasks__item').remove();
   // }
 
+  function handleLike(e) {
+    e.target.classList.toggle('photo-grid__like_active');
+  }
+
   const newPhoto = photoTemplate.content.querySelector('.photo-grid__item').cloneNode(true);
   const photoSrc = newPhoto.querySelector('.photo-grid__pic');
   const photoTitle = newPhoto.querySelector('.photo-grid__title');
+  const likeButton = newPhoto.querySelector('.photo-grid__like');
   //const cardRemoveButton = newTask.querySelector('.tasks__trash');
 
   photoTitle.textContent = name;
   photoSrc.src = link;
 
   //cardRemoveButton.addEventListener('click', handleRemoveTodo);
-  //closeButton.addEventListener('click', popupClose);
+  likeButton.addEventListener('click', handleLike);
 
   return newPhoto;
 }
@@ -73,8 +80,7 @@ initialCards.forEach(function(item) {
   photoContainer.append(newCard);
 });
 
-// Обработчик «отправки» формы, хотя пока
-// она никуда отправляться не будет
+// Обработчик «отправки» формы
 function formSubmitHandler (evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
 
