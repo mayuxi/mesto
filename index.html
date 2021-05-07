@@ -27,58 +27,17 @@
     </section>
     <section class="places">
       <ul class="photo-grid">
-        <li class="photo-grid__item">
-          <img src="./images/photo-grid/kirill-pershin-dH-RKxKs6to-unsplash.jpg" alt="Карачаевск" class="photo-grid__pic">
-          <div class="photo-grid__item-description">
-            <h2 class="photo-grid__title">Карачаевск</h2>
-            <button type="button" class="photo-grid__like">Нравится</button>
-          </div>
-        </li>
-        <li class="photo-grid__item">
-          <img src="./images/photo-grid/kirill-pershin-HJNJV2Be4Ps-unsplash.jpg" alt="Гора Эльбрус" class="photo-grid__pic">
-          <div class="photo-grid__item-description">
-            <h2 class="photo-grid__title">Гора Эльбрус</h2>
-            <button type="button" class="photo-grid__like photo-grid__like_active">Нравится</button>
-          </div>
-        </li>
-        <li class="photo-grid__item">
-          <img src="./images/photo-grid/kirill-pershin-jmQEz9VvUoI-unsplash.jpg" alt="Домбай" class="photo-grid__pic">
-          <div class="photo-grid__item-description">
-            <h2 class="photo-grid__title">Домбай</h2>
-            <button type="button" class="photo-grid__like">Нравится</button>
-          </div>
-        </li>
-        <li class="photo-grid__item">
-          <img src="./images/photo-grid/kirill-pershin-HJNJV2Be4Ps-unsplash.jpg" alt="Гора Эльбрус" class="photo-grid__pic">
-          <div class="photo-grid__item-description">
-            <h2 class="photo-grid__title">Гора Эльбрус</h2>
-            <button type="button" class="photo-grid__like">Нравится</button>
-          </div>
-        </li>
-        <li class="photo-grid__item">
-          <img src="images/photo-grid/kirill-pershin-jmQEz9VvUoI-unsplash.jpg" alt="Домбай" class="photo-grid__pic">
-          <div class="photo-grid__item-description">
-            <h2 class="photo-grid__title">Домбай</h2>
-            <button type="button" class="photo-grid__like">Нравится</button>
-          </div>
-        </li>
-        <li class="photo-grid__item">
-          <img src="./images/photo-grid/kirill-pershin-dH-RKxKs6to-unsplash.jpg" alt="Карачаево-Черкесия" class="photo-grid__pic">
-          <div class="photo-grid__item-description">
-            <h2 class="photo-grid__title">Карачаево-Черкесия</h2>
-            <button type="button" class="photo-grid__like">Нравится</button>
-          </div>
-        </li>
+        
       </ul>
     </section>
   </main>
   <footer class="footer">
     &copy; 2020 Mesto Russia
   </footer>
-  <div class="popup">
+  <div class="popup popup_type_profile">
     <div class="popup__container">
       <button class="popup__close" type="button">Закрыть</button>
-      <form action="/" method="POST" class="form" name="edit-profile">
+      <form action="/" method="POST" class="form form_type_profile" name="edit-profile">
         <h2 class="form__title">Редактировать профиль</h2>
         <input type="text" value="Жак-Ив Кусто" placeholder="Ваше имя" class="form__input form__input_type_name" name="profile-name">
         <input type="text" value="Исследователь океана" placeholder="Чем занимаетесь?" class="form__input form__input_type_job" name="profile-job">
@@ -86,6 +45,28 @@
       </form>
     </div>
   </div>
+
+  <div class="popup popup_type_photo">
+    <div class="popup__container">
+      <button class="popup__close" type="button">Закрыть</button>
+      <form action="/" method="POST" class="form form_type_photo" name="add-photo">
+        <h2 class="form__title">Новое место</h2>
+        <input type="text" value="" placeholder="Название" class="form__input form__input_type_title" name="photo-title">
+        <input type="url" value="" placeholder="Ссылка на картинку" class="form__input form__input_type_src" name="photo-src">
+        <button type="submit" class="form__submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
+
+  <template id="photo-grid-template" class="photo-grid-template">
+    <li class="photo-grid__item">
+      <img src="" alt="" class="photo-grid__pic">
+      <div class="photo-grid__item-description">
+        <h2 class="photo-grid__title"></h2>
+        <button type="button" class="photo-grid__like">Нравится</button>
+      </div>
+    </li>
+  </template>
   <script src="./scripts/script.js"></script>
 </body>
 </html>
