@@ -52,9 +52,9 @@ const initialCards = [
 ];
 
 function addPhoto(name, link) {
-  // function handleRemoveTodo(e) {
-  //     e.target.closest('.tasks__item').remove();
-  // }
+  function handleDeletePhoto(e) {
+      e.target.closest('.photo-grid__item').remove();
+  }
 
   function handleLike(e) {
     e.target.classList.toggle('photo-grid__like_active');
@@ -63,13 +63,13 @@ function addPhoto(name, link) {
   const newPhoto = photoTemplate.content.querySelector('.photo-grid__item').cloneNode(true);
   const photoSrc = newPhoto.querySelector('.photo-grid__pic');
   const photoTitle = newPhoto.querySelector('.photo-grid__title');
+  const deleteButton = newPhoto.querySelector('.photo-grid__delete');
   const likeButton = newPhoto.querySelector('.photo-grid__like');
-  //const cardRemoveButton = newTask.querySelector('.tasks__trash');
 
   photoTitle.textContent = name;
   photoSrc.src = link;
 
-  //cardRemoveButton.addEventListener('click', handleRemoveTodo);
+  deleteButton.addEventListener('click', handleDeletePhoto);
   likeButton.addEventListener('click', handleLike);
 
   return newPhoto;
@@ -127,6 +127,6 @@ closeButton.forEach(item => {
 // он будет следить за событием “submit” - «отправка»
 formProfile.addEventListener('submit', formSubmitHandler);
 formPhoto.addEventListener('submit', formSubmitHandler);
-//closeButton.addEventListener('click', popupClose);
+
 editButton.addEventListener('click', () => { popupOpen(popupProfile); });
 addButton.addEventListener('click', () => { popupOpen(popupPhoto); });
