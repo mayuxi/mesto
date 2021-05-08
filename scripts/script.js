@@ -53,7 +53,7 @@ const initialCards = [
 
 function addPhoto(name, link) {
   function handleDeletePhoto(e) {
-      e.target.closest('.photo-grid__item').remove();
+    e.target.closest('.photo-grid__item').remove();
   }
 
   function handleLike(e) {
@@ -67,10 +67,25 @@ function addPhoto(name, link) {
   const likeButton = newPhoto.querySelector('.photo-grid__like');
 
   photoTitle.textContent = name;
+  photoSrc.alt = name;
   photoSrc.src = link;
+
+  function handleModal() {
+    
+    const popupModal = document.querySelector('.popup_type_modal');
+    const modalSrc = popupModal.querySelector('.popup__pic');
+    const modalTitle = popupModal.querySelector('.popup__pic-caption');
+
+    popupOpen(popupModal);
+    modalTitle.textContent = name;
+    modalSrc.alt = name;
+    modalSrc.src = link;
+
+  }
 
   deleteButton.addEventListener('click', handleDeletePhoto);
   likeButton.addEventListener('click', handleLike);
+  photoSrc.addEventListener('click', handleModal);
 
   return newPhoto;
 }

@@ -9,6 +9,12 @@
   position: relative;
 }
 
+.popup_type_modal .popup__container {
+  background: none;
+  padding: 0;
+  max-width: 100%;
+}
+
 @media screen and (max-width: 600px) {
   .popup__container {
     width: 282px;
