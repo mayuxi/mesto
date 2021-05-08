@@ -71,16 +71,29 @@ function addPhoto(name, link) {
   photoSrc.src = link;
 
   function handleModal() {
-    
     const popupModal = document.querySelector('.popup_type_modal');
-    const modalSrc = popupModal.querySelector('.popup__pic');
-    const modalTitle = popupModal.querySelector('.popup__pic-caption');
+    const modalClose = popupModal.querySelector('.popup__close');
+    const modalSrc = document.createElement('img');
+    const modalTitle = document.createElement('h2');
+
+    modalSrc.classList.add('popup__pic');
+    modalTitle.classList.add('popup__pic-caption')
+    popupModal.querySelector('.popup__container').append(modalSrc, modalTitle);
 
     popupOpen(popupModal);
     modalTitle.textContent = name;
     modalSrc.alt = name;
     modalSrc.src = link;
 
+    modalClose.addEventListener('click', () => { modalSrc.remove(); modalTitle.remove(); });
+
+    // Если это модальное окно, чистим содержимое при закрытии
+    // if (currentPopup.classList.contains('popup_type_modal')) {
+    //   console.log(currentPopup.querySelector('.popup__container'));
+    //   const modalContainer = currentPopup.querySelector('.popup__container');
+    //   modalContainer.getElementsByTagName('img').remove;
+    //   modalContainer.getElementsByTagName('h2').remove;
+    // }
   }
 
   deleteButton.addEventListener('click', handleDeletePhoto);
@@ -123,11 +136,6 @@ function popupOpen(popupName) {
     jobInput.value = profileJob.textContent;
   }
 }
-
-// function currentPopup() {
-//   let x = document.querySelector('.popup_opened');
-//   return x;
-// }
 
 function popupClose() {
   let currentPopup = document.querySelector('.popup_opened');
