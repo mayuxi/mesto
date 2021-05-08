@@ -19,5 +19,6 @@
   .popup__close {
     top: -60px;
     right: 0px;
+    zoom: 0.65;
   }
 }

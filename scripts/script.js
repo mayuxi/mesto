@@ -86,14 +86,6 @@ function addPhoto(name, link) {
     modalSrc.src = link;
 
     modalClose.addEventListener('click', () => { modalSrc.remove(); modalTitle.remove(); });
-
-    // Если это модальное окно, чистим содержимое при закрытии
-    // if (currentPopup.classList.contains('popup_type_modal')) {
-    //   console.log(currentPopup.querySelector('.popup__container'));
-    //   const modalContainer = currentPopup.querySelector('.popup__container');
-    //   modalContainer.getElementsByTagName('img').remove;
-    //   modalContainer.getElementsByTagName('h2').remove;
-    // }
   }
 
   deleteButton.addEventListener('click', handleDeletePhoto);
