@@ -1,6 +1,5 @@
 // Находим кнопки
 const addButton = document.querySelector('.profile__add-button');
-const closeButton = document.querySelectorAll('.popup__close');
 const editButton = document.querySelector('.profile__edit');
 
 // Контейнер и шаблон для фото
@@ -11,6 +10,8 @@ const photoTemplate = document.querySelector('#photo-grid-template');
 const popup = document.querySelector('.popup');
 const popupProfile = document.querySelector('.popup_type_profile');
 const popupPhoto = document.querySelector('.popup_type_photo');
+const closeProfileButton = popupProfile.querySelector('.popup__close');
+const closePhotoButton = popupPhoto.querySelector('.popup__close');
 
 // Профайл
 const formProfile = document.querySelector('.form_type_profile');
@@ -24,32 +25,10 @@ const formPhoto = document.querySelector('.form_type_photo');
 const photoTitleInput = document.querySelector('.form__input_type_title');
 const photoLinkInput = document.querySelector('.form__input_type_src'); 
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
+const popupModal = document.querySelector('.popup_type_modal');
+const modalClose = popupModal.querySelector('.popup__close');
+const modalSrc = popupModal.querySelector('.popup__pic');
+const modalTitle = popupModal.querySelector('.popup__pic-caption');
 
 function addPhoto(name, link) {
   function handleDeletePhoto(e) {
@@ -71,21 +50,13 @@ function addPhoto(name, link) {
   photoSrc.src = link;
 
   function handleModal() {
-    const popupModal = document.querySelector('.popup_type_modal');
-    const modalClose = popupModal.querySelector('.popup__close');
-    const modalSrc = document.createElement('img');
-    const modalTitle = document.createElement('h2');
-
-    modalSrc.classList.add('popup__pic');
-    modalTitle.classList.add('popup__pic-caption')
-    popupModal.querySelector('.popup__container').append(modalSrc, modalTitle);
-
-    popupOpen(popupModal);
+    
+    openPopup(popupModal);
     modalTitle.textContent = name;
     modalSrc.alt = name;
     modalSrc.src = link;
 
-    modalClose.addEventListener('click', () => { modalSrc.remove(); modalTitle.remove(); });
+    modalClose.addEventListener('click', () => { closePopup(popupModal) });
   }
 
   deleteButton.addEventListener('click', handleDeletePhoto);
@@ -108,40 +79,42 @@ function formSubmitHandler (evt) {
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value; 
 
-    // Форма добавления фото
-    if (photoTitleInput.value && photoLinkInput.value) {
-      photoContainer.prepend(addPhoto(photoTitleInput.value, photoLinkInput.value));
-      // Очищаем поля
-      photoTitleInput.value = '';
-      photoLinkInput.value = '';
-    }
-
     // Закрываем попап
-    popupClose();
+    closePopup(popupProfile);
 }
 
-function popupOpen(popupName) {
+// Форма для фото
+function photoSumbitHandler (evt) {
+  evt.preventDefault();
+  photoContainer.prepend(addPhoto(photoTitleInput.value, photoLinkInput.value));
+
+  // Очищаем поля
+  photoTitleInput.value = '';
+  photoLinkInput.value = '';
+
+  closePopup(popupPhoto);
+} 
+
+function editProfile() {
+  popupProfile.classList.add('popup_opened');
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileJob.textContent;
+}
+
+function openPopup(popupName) {
   popupName.classList.add('popup_opened');
-
-  if (popupName === popupProfile) {
-    nameInput.value = profileName.textContent;
-    jobInput.value = profileJob.textContent;
-  }
 }
 
-function popupClose() {
-  let currentPopup = document.querySelector('.popup_opened');
-  currentPopup.classList.remove('popup_opened');
+function closePopup(popupName) {
+  popupName.classList.remove('popup_opened');
 }
-
-closeButton.forEach(item => {
-  item.addEventListener('click', popupClose);
-});
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formProfile.addEventListener('submit', formSubmitHandler);
-formPhoto.addEventListener('submit', formSubmitHandler);
+formPhoto.addEventListener('submit', photoSumbitHandler);
 
-editButton.addEventListener('click', () => { popupOpen(popupProfile); });
-addButton.addEventListener('click', () => { popupOpen(popupPhoto); });
+editButton.addEventListener('click', editProfile);
+addButton.addEventListener('click', () => { openPopup(popupPhoto); });
+closeProfileButton.addEventListener('click', () => { closePopup(popupProfile) });
+closePhotoButton.addEventListener('click', () => { closePopup(popupPhoto) });
