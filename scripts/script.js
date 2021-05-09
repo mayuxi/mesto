@@ -50,13 +50,10 @@ function addPhoto(name, link) {
   photoSrc.src = link;
 
   function handleModal() {
-    
     openPopup(popupModal);
     modalTitle.textContent = name;
     modalSrc.alt = name;
     modalSrc.src = link;
-
-    modalClose.addEventListener('click', () => { closePopup(popupModal) });
   }
 
   deleteButton.addEventListener('click', handleDeletePhoto);
@@ -72,7 +69,7 @@ initialCards.forEach(function(item) {
 });
 
 // Обработчик «отправки» формы
-function formSubmitHandler (evt) {
+function profileSubmitHander (evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
 
     // Получите значение полей jobInput и nameInput из свойства value
@@ -96,7 +93,7 @@ function photoSumbitHandler (evt) {
 } 
 
 function editProfile() {
-  popupProfile.classList.add('popup_opened');
+  openPopup(popupProfile);
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
 }
@@ -111,10 +108,11 @@ function closePopup(popupName) {
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
-formProfile.addEventListener('submit', formSubmitHandler);
+formProfile.addEventListener('submit', profileSubmitHander);
 formPhoto.addEventListener('submit', photoSumbitHandler);
 
 editButton.addEventListener('click', editProfile);
 addButton.addEventListener('click', () => { openPopup(popupPhoto); });
 closeProfileButton.addEventListener('click', () => { closePopup(popupProfile) });
 closePhotoButton.addEventListener('click', () => { closePopup(popupPhoto) });
+modalClose.addEventListener('click', () => { closePopup(popupModal) });
