@@ -89,6 +89,11 @@ function photoSumbitHandler (evt) {
   photoTitleInput.value = '';
   photoLinkInput.value = '';
 
+  // Делаем кнопку неактивной
+  const inputList = Array.from(formPhoto.querySelectorAll('.form__input'));
+  const buttonElement = formPhoto.querySelector('.form__submit');
+  toggleButtonState(inputList, buttonElement);
+
   closePopup(popupPhoto);
 } 
 
@@ -106,6 +111,25 @@ function closePopup(popupName) {
   popupName.classList.remove('popup_opened');
 }
 
+function keyHandler(evt) {
+  // проверяем есть ли открытый попап и только тогда закрываем
+  const activePopup = document.querySelector('.popup_opened');
+  if (activePopup && evt.key === 'Escape') { 
+    closePopup(activePopup);
+  }
+}
+
+function overlayHandler(evt) {
+  const activePopup = document.querySelector('.popup_opened');
+  
+  if (activePopup && evt.target === activePopup ) {
+    closePopup(activePopup);
+  }
+}
+
+// включение валидации вызовом enableValidation
+enableValidation();
+
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formProfile.addEventListener('submit', profileSubmitHander);
@@ -116,3 +140,6 @@ addButton.addEventListener('click', () => { openPopup(popupPhoto); });
 closeProfileButton.addEventListener('click', () => { closePopup(popupProfile) });
 closePhotoButton.addEventListener('click', () => { closePopup(popupPhoto) });
 modalClose.addEventListener('click', () => { closePopup(popupModal) });
+
+document.addEventListener('keydown', keyHandler);
+document.addEventListener('click', overlayHandler);
