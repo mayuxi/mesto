@@ -39,14 +39,14 @@
       <button class="popup__close" type="button">Закрыть</button>
       <form action="/" method="POST" class="form form_type_profile" name="edit-profile">
         <h2 class="form__title">Редактировать профиль</h2>
-        <label class="form__field">
+        <div class="form__field">
           <input type="text" value="Жак-Ив Кусто" placeholder="Ваше имя" class="form__input form__input_type_name" name="profile-name" id="profile-name" minlength="2" maxlength="40" required>
           <span class="form__input-error profile-name-error"></span>
-        </label>
-        <label class="form__field">
+        </div>
+        <div class="form__field">
           <input type="text" value="Исследователь океана" placeholder="Чем занимаетесь?" class="form__input form__input_type_job" name="profile-job" id="profile-job" minlength="2" maxlength="200" required>
           <span class="form__input-error profile-job-error"></span>
-        </label>
+        </div>
         <button type="submit" class="form__submit">Сохранить</button>
       </form>
     </div>
@@ -57,14 +57,14 @@
       <button class="popup__close" type="button">Закрыть</button>
       <form action="/" method="POST" class="form form_type_photo" name="add-photo">
         <h2 class="form__title">Новое место</h2>
-        <label class="form__field">
+        <div class="form__field">
           <input type="text" value="" placeholder="Название" class="form__input form__input_type_title" name="photo-title" id="photo-title" required minlength="2" maxlength="30">
           <span class="form__input-error photo-title-error"></span>
-        </label>
-        <label class="form__field">
+        </div>
+        <div class="form__field">
           <input type="url" value="" placeholder="Ссылка на картинку" class="form__input form__input_type_src" name="photo-src" id="photo-src" required>
           <span class="form__input-error photo-src-error"></span>
-        </label>
+        </div>
         <button type="submit" class="form__submit">Создать</button>
       </form>
     </div>
