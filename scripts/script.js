@@ -1,3 +1,5 @@
+// import Card from './Card.js'
+
 // Находим кнопки
 const addButton = document.querySelector('.profile__add-button');
 const editButton = document.querySelector('.profile__edit');
@@ -31,65 +33,29 @@ const modalClose = popupModal.querySelector('.popup__close');
 const modalSrc = popupModal.querySelector('.popup__pic');
 const modalTitle = popupModal.querySelector('.popup__pic-caption');
 
-// Добавление фото/мест
-function addPhoto(name, link) {
-  const newPhoto = photoTemplate.content.querySelector('.photo-grid__item').cloneNode(true);
-  const photoSrc = newPhoto.querySelector('.photo-grid__pic');
-  const photoTitle = newPhoto.querySelector('.photo-grid__title');
-  const deleteButton = newPhoto.querySelector('.photo-grid__delete');
-  const likeButton = newPhoto.querySelector('.photo-grid__like');
 
-  photoTitle.textContent = name;
-  photoSrc.alt = name;
-  photoSrc.src = link;
 
-  deleteButton.addEventListener('click', handleDeletePhoto);
-  likeButton.addEventListener('click', handleLike);
-  photoSrc.addEventListener('click', () => { handleModal(name, link) });
+// Подгружаем первые карточки
+initialCards.forEach((item) => {
+  const card = new Card(item, '#photo-grid-template');
 
-  return newPhoto;
-}
+	const cardElement = card.generateCard();
 
-// Подгружаем первые карточки (из initial-cards.js)
-initialCards.forEach(function(item) {
-  const newCard = addPhoto(item['name'], item['link']);
-  photoContainer.append(newCard);
+	photoContainer.append(cardElement);
 });
 
-// Удаление фото
-function handleDeletePhoto(e) {
-  e.target.closest('.photo-grid__item').remove();
-}
-
-// Обработчик лайков
-function handleLike(e) {
-  e.target.classList.toggle('photo-grid__like_active');
-}
-
-// Модальное окно для просмотра фотографий
-function handleModal(name, link) {
-  openPopup(popupModal);
-  modalTitle.textContent = name;
-  modalSrc.alt = name;
-  modalSrc.src = link;
-}
-
-// Обработчик «отправки» формы
-function handleProfileFormSubmit (evt) {
-    evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-
-    // Получите значение полей jobInput и nameInput из свойства value
-    profileName.textContent = nameInput.value;
-    profileJob.textContent = jobInput.value; 
-
-    // Закрываем попап
-    closePopup(popupProfile);
-}
-
-// Форма для фото
+// Обработчик формы для добавления фото
 function handlePhotoFormSubmit (evt) {
   evt.preventDefault();
-  photoContainer.prepend(addPhoto(photoTitleInput.value, photoLinkInput.value));
+
+  const data = {};
+  data.name = photoTitleInput.value;
+  data.link = photoLinkInput.value;
+
+  const card = new Card(data, '#photo-grid-template');
+	const cardElement = card.generateCard();
+
+  photoContainer.prepend(cardElement);
 
   // Очищаем поля
   formPhoto.reset();
@@ -98,7 +64,19 @@ function handlePhotoFormSubmit (evt) {
   toggleButtonState(inputList, buttonElement);
 
   closePopup(popupPhoto);
-} 
+}
+
+// Обработчик «отправки» формы
+function handleProfileFormSubmit (evt) {
+  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
+
+  // Получите значение полей jobInput и nameInput из свойства value
+  profileName.textContent = nameInput.value;
+  profileJob.textContent = jobInput.value; 
+
+  // Закрываем попап
+  closePopup(popupProfile);
+}
 
 function editProfile() {
   openPopup(popupProfile);
@@ -156,8 +134,7 @@ const config = {
 
 enableValidation(config);
 
-// Прикрепляем обработчик к форме:
-// он будет следить за событием “submit” - «отправка»
+// Вешаем события и обработчики:
 formProfile.addEventListener('submit', handleProfileFormSubmit);
 formPhoto.addEventListener('submit', handlePhotoFormSubmit);
 
