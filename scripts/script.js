@@ -33,8 +33,6 @@ const modalClose = popupModal.querySelector('.popup__close');
 const modalSrc = popupModal.querySelector('.popup__pic');
 const modalTitle = popupModal.querySelector('.popup__pic-caption');
 
-
-
 // Подгружаем первые карточки
 initialCards.forEach((item) => {
   const card = new Card(item, '#photo-grid-template');
