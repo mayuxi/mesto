@@ -59,7 +59,7 @@ function handlePhotoFormSubmit (evt) {
   formPhoto.reset();
 
   // Делаем кнопку неактивной
-  toggleButtonState(inputList, buttonElement);
+  validation.toggleButtonState(inputList, buttonElement);
 
   closePopup(popupPhoto);
 }
@@ -82,9 +82,10 @@ function editProfile() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
 
-  // проверяем валидность полей при открытии 
-  checkInputValidity(formProfile, nameInput);
-  checkInputValidity(formProfile, jobInput);
+  // проверяем актуальность валидации полей на случай если были введены
+  // неверные данные и закрыт попап (без сабмита)
+  validation.checkInputValidity(formProfile, nameInput);
+  validation.checkInputValidity(formProfile, jobInput);
 }
 
 function openPopup(popupName) {
@@ -122,7 +123,7 @@ function handleOverlayClick(evt) {
 // включение валидации вызовом enableValidation
 // все настройки передаются при вызове
 const config = {
-  formSelector: '.form',
+  //formSelector: '.form',
   inputSelector: '.form__input',
   submitButtonSelector: '.form__submit',
   inactiveButtonClass: 'form__submit_disabled',
@@ -130,7 +131,9 @@ const config = {
   errorClass: 'form__input-error_active'
 };
 
-enableValidation(config);
+const validation = new FormValidator(config, '.form');
+validation.enableValidation('.form');
+
 
 // Вешаем события и обработчики:
 formProfile.addEventListener('submit', handleProfileFormSubmit);

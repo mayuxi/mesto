@@ -53,18 +53,6 @@ class Card {
     this._element.querySelector('.photo-grid__like').classList.toggle('photo-grid__like_active');
   }
 
-  _handlePhotoFormSubmit (evt) {
-    evt.preventDefault();
-    photoContainer.prepend(generateCard());
-  
-    formPhoto.reset();
-  
-    // Делаем кнопку неактивной
-    toggleButtonState(inputList, buttonElement);
-  
-    closePopup(popupPhoto);
-  } 
-
   generateCard() {
     this._getTemplate();
     this._setEventListeners();
