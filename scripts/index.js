@@ -31,7 +31,7 @@ function handlePhotoFormSubmit (evt) {
   formPhoto.reset();
 
   // Делаем кнопку неактивной
-  validatePhoto.enableValidation();
+  validatePhoto.toggleButtonState();
 
   closePopup(popupPhoto);
 }
@@ -61,7 +61,7 @@ function editProfile() {
   jobInput.value = profileJob.textContent;
 
   // Проверяем валидность полей, если закрыт попап без отправки формы
-  validateProfile.enableValidation();
+  validateProfile.hideInputErrors();
 }
 
 // включение валидации вызовом enableValidation
