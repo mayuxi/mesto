@@ -1,3 +1,6 @@
+import { popupModal, modalSrc, modalTitle } from '../utils/constants.js';
+import { openPopup } from '../utils/utils.js';
+
 class Card {
   // передаем данные карточки и селектор
   constructor(data, cardSelector) {
@@ -32,14 +35,11 @@ class Card {
 
   // Модальное окно для просмотра фотографий
   _handleCardClick() {
-    const _popupModal = document.querySelector('.popup_type_modal');
-    const _modalSrc = popupModal.querySelector('.popup__pic');
-    const _modalTitle = popupModal.querySelector('.popup__pic-caption');
-
-    openPopup(_popupModal);
-    _modalTitle.textContent = this._name;
-    _modalSrc.alt = this._name;
-    _modalSrc.src = this._link;
+    
+    openPopup(popupModal);
+    modalTitle.textContent = this._name;
+    modalSrc.alt = this._name;
+    modalSrc.src = this._link;
 
   }
 

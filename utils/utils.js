@@ -11,7 +11,7 @@ function closePopup(popupName) {
   
   // удаляем обработчики закрытия по Escape и клику на overlay
   document.removeEventListener('keydown', handleHotkey);
-  document.removeEventListener('mousedown', handleOverlayClick);
+  document.removeEventListener('click', handleOverlayClick);
 }
 
 function handleHotkey(evt) {
@@ -29,3 +29,5 @@ function handleOverlayClick(evt) {
     closePopup(activePopup);
   }
 }
+
+export { openPopup, closePopup, handleHotkey, handleOverlayClick };
