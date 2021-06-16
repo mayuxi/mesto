@@ -10,6 +10,23 @@ import { openPopup, closePopup } from '../utils/utils.js'
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
 
+class Section {
+  constructor({ items, renderer }, containerSelector) {
+    this._renderedItems = items;
+    this._renderer = renderer;
+    
+    this._container = document.querySelector(containerSelector);
+  }
+
+  renderItems() {
+    this._renderedItems.forEach(item => this._renderer(item))
+  }
+
+  addItem(element) {
+    this._container.append(element);
+  }
+}
+
 // Создаем экземпляр карточки
 function createCard(item) {
   const card = new Card(item, '#photo-grid-template');
