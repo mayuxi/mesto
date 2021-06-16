@@ -11,6 +11,7 @@ export const popupProfile = document.querySelector('.popup_type_profile');
 export const popupPhoto = document.querySelector('.popup_type_photo');
 export const closeProfileButton = popupProfile.querySelector('.popup__close');
 export const closePhotoButton = popupPhoto.querySelector('.popup__close');
+export const ESCAPE_KEY = 'Escape';
 
 // Профайл
 export const formProfile = document.querySelector('.form_type_profile');

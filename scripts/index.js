@@ -2,7 +2,7 @@ import {
   initialCards, config,
   photoTitleInput, photoLinkInput, photoContainer, 
   formPhoto, formProfile,
-  popupPhoto, popupProfile, popupModal,
+  popupPhoto, popupProfile, popupModal, ESCAPE_KEY,
   profileJob, profileName, jobInput, nameInput,
   editButton, addButton, closePhotoButton, closeProfileButton, modalClose
 } from '../utils/constants.js';
@@ -25,6 +25,86 @@ class Section {
   addItem(element) {
     this._container.append(element);
   }
+}
+
+class Popup {
+  constructor( popupSelector ) {
+    this._element = document.querySelector(popupSelector);
+  }
+
+  open() {
+    this._element.classList.add('popup_opened');
+  }
+
+  close() {
+    this._element.classList.remove('popup_opened');
+  }
+
+  _handleEscClose() {
+    // проверяем есть ли открытый попап и только тогда закрываем
+    if (document.querySelector('.popup_opened') && evt.key === ESCAPE_KEY) { 
+      this.close(_activePopup);
+    }
+  }
+
+  setEventListeners() {
+    this._element.querySelector('.popup__close').addEventListener('click', () => { this.close() });
+
+    // добавляем слушатель клика иконке закрытия попапа и по Escape
+    document.addEventListener('keydown', this._handleEscClose);
+  }
+}
+
+class PopupWithImage extends Popup {
+  constructor( popupSelector, src, name ) {
+    super(popupSelector);
+    this._src = src;
+    this._name = name;
+  }
+
+  open() {
+    this._element.classList.add('popup_opened');
+    modalTitle.textContent = this._name;
+    modalSrc.alt = this._name;
+    modalSrc.src = this._link;
+  }
+}
+
+class PopupWithForm extends Popup {
+  constructor( popupSelector, handleFormSubmit ) {
+    super(popupSelector);
+    this._handleFormSubmit = handleFormSubmit;
+
+    this._form = popupSelector.querySelector('.form');
+  }
+
+  setEventListeners() {
+    this._element.querySelector('.popup__close').addEventListener('click', () => { this.close() });
+    // добавляем слушатель клика иконке закрытия попапа и по Escape
+    document.addEventListener('keydown', this._handleEscClose);
+
+    this._form.addEventListener('submit', (evt) => {
+      evt.preventDefault();
+      this._handleFormSubmit(this._getInputValues());
+
+      this._form.reset();
+    })
+  }
+
+  _getInputValues() {
+    this._inputList = this._element.querySelectorAll('.form__input');
+    
+    this._formValues = {};
+    this._inputList.forEach(input => this._formValues[input.name] = input.value);
+    
+    return this._formValues;
+  }
+
+  close() {
+    this._element.classList.remove('popup_opened');
+    this._form.reset();
+  }
+
 }
 
 // Создаем экземпляр карточки
@@ -94,6 +174,7 @@ formPhoto.addEventListener('submit', handlePhotoFormSubmit);
 
 editButton.addEventListener('click', editProfile);
 addButton.addEventListener('click', () => { openPopup(popupPhoto); });
+
 closeProfileButton.addEventListener('click', () => { closePopup(popupProfile) });
 closePhotoButton.addEventListener('click', () => { closePopup(popupPhoto) });
 modalClose.addEventListener('click', () => { closePopup(popupModal) });
